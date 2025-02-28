@@ -1,0 +1,88 @@
+{
+	"fileTypes": [
+		"jill"
+	],
+	"name": "jill",
+	"patterns": [
+		{
+			"include": "#main"
+		}
+	],
+	"scopeName": "source.jill",
+	"uuid": "",
+	"repository": {
+		"main": {
+			"patterns": [
+				{
+					"match": "(--\\s*)(@type)(.*)",
+					"captures": {
+						"1": {
+							"name": "comment.jill"
+						},
+						"2": {
+							"name": "entity.name.type.jill"
+						},
+						"3": {
+							"name": "comment.jill"
+						}
+					}
+				},
+				{
+					"match": "(--.*)",
+					"name": "comment.jill"
+				},
+				{
+					"match": "(fn|let|type)",
+					"name": "keyword.jill",
+					"comment": "keywords"
+				},
+				{
+					"match": "((if|ifElse|do|todo|match|free)(?!\\w))",
+					"name": "keyword.jill",
+					"comment": "special funcs"
+				},
+				{
+					"match": "(,|\\.|\\(|\\)|:|=|-|&)",
+					"name": "punctuation.jill",
+					"comment": "punctuation"
+				},
+				{
+					"match": "(\\d+)",
+					"name": "constant.jill",
+					"comment": "number"
+				},
+				{
+					"match": "(\".*\")",
+					"name": "constant.jill",
+					"comment": "string"
+				},
+				{
+					"match": "(True|False)",
+					"name": "constant.jill",
+					"comment": "bool"
+				},
+				{
+					"match": "(_)",
+					"name": "comment.jill",
+					"comment": "discard"
+				},
+				{
+					"match": "(([_a-zA-Z][_a-zA-Z0-9]*)(?=::))",
+					"name": "entity.name.class.jill"
+				},
+				{
+					"match": "(([_a-zA-Z][_a-zA-Z0-9]*)(?=:))",
+					"name": "entity.name.type.jill"
+				},
+				{
+					"match": "(([_a-zA-Z][_a-zA-Z0-9]*)(?=\\())",
+					"name": "entity.name.function.jill"
+				},
+				{
+					"match": "([_a-zA-Z][_a-zA-Z0-9]*)",
+					"name": "variable.jill"
+				}
+			]
+		}
+	}
+}
