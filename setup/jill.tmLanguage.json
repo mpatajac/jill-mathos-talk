@@ -14,7 +14,7 @@
 		"main": {
 			"patterns": [
 				{
-					"match": "(--\\s*)(@type)(.*)",
+					"match": "(--\\s*)(@\\w+)(.*)",
 					"captures": {
 						"1": {
 							"name": "comment.jill"
@@ -42,7 +42,7 @@
 					"comment": "special funcs"
 				},
 				{
-					"match": "(,|\\.|\\(|\\)|:|=|-|&)",
+					"match": "(,|\\.|\\(|\\)|\\[|\\]|:|=|&)",
 					"name": "punctuation.jill",
 					"comment": "punctuation"
 				},

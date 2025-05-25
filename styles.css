@@ -1,0 +1,19 @@
+.slidev-vclick-target {
+	transition: all 500ms ease;
+}
+
+li {
+	list-style-type: none;
+}
+
+li.slidev-vclick-prior {
+	opacity: .25;
+}
+
+#slide-content .grid {
+	gap: .5rem;
+}
+
+pre {
+	padding: .75rem !important;
+}

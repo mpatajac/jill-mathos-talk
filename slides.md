@@ -1,6 +1,9 @@
 ---
 theme: default
 title: Jill - a functional programming language for Nand2Tetris
+defaults:
+  layout: statement
+transition: fade
 ---
 
 # Slide 1
@@ -8,18 +11,160 @@ title: Jill - a functional programming language for Nand2Tetris
 The frontmatter of this slide is also the headmatter
 
 ---
-class: text-white
+
+<!-- TODO: replace with diagram -->
+
+!["abstraction path"](./.dev/img/nand2tetris-structure.jpg)
+
+
 ---
 
-# Slide 2
+# Bullet points test
+
+<v-clicks>
+
+- point one
+- point two
+- third point
+- hehe
+
+</v-clicks>
+
+---
+layout: quote
+---
+
+# Quote layout test
+
+> Some of these features...<br>
+> Make the writing of Jack programs a bit harder;<br>
+> Make the writing of a Jack compiler much easier.
+
+---
+layout: fact
+---
+
+# ZAŠTO
+
+POBOGU
+
+
+--- 
+
+# Literals
+
+<v-click>
+
+````md magic-move
+
+
+```jill
+-- Int
+42
+```
+
+
+```jill{4-}
+-- Int
+42
+
+-- Bool
+False
+```
+
+
+```jill{7-}
+-- Int
+42
+
+-- Bool
+False
+
+-- String
+"Hello, there"
+```
+
+
+```jill{10-}
+-- Int
+42
+
+-- Bool
+False
+
+-- String
+"Hello, there"
+
+-- List
+[3, 8, 11, 5, 7]
+```
+
+````
+
+</v-click>
+
+
+---
+
+# Variable
+
+<v-click>
+
+```jill
+counter
+```
+
+</v-click>
+
+
+
+---
+
+# Function call
+
+<v-click>
+
+````md magic-move
+
+```jill
+checkUsername(username)
+```
+
+```jill{4-}
+checkUsername(username)
+
+
+Output::printString("Player 1")
+```
+````
+
+</v-click>
+
+
+
+
+---
+layout: default
+---
+
+
+# do
+
+<v-click>
+
 ```
 
 It took you {totalAttempts} attempts to guess the number!
 
 ```
----
 
-# Slide 2
+</v-click>
+
+<br>
+
+<v-click>
+
+
 
 ````md magic-move
 ```jill
@@ -74,58 +219,234 @@ fn printAttemptCount totalAttempts =
 
 ````
 
+</v-click>
+
 ---
 
-# Example
+<v-clicks>
 
-```jill {all|1|1-4|7-8|11-}{maxHeight: '40vh'}
--- @type Point(Int, Int)
-type Point = Point(x, y).
+- variables, functions
+- immutable variables
+- no loops
+- types
+- tail-call optimization
+ 
+</v-clicks>
 
-type Direction = Up, Down, Left, Right.
+<!-- 
+
+most of the stuff was straight-forward
 
 
--- @type Point
-let origin = Point(0, 0).
+- [click] variables, functions (like in Jack) 
+- [click] immutable variables (just don't implement mutation) 
+- [click] no loops (just don't add them) 
+- [click] types (ctor functions, tagged unions) 
+- [click] tail call (first idea worked, tough execution)
+
+-->
+
+---
+
+# Take 0: 
+
+## function pointer
+
+---
+
+`<possible fn ptr screenshot>`
+
+<!-- tipically used -->
+
+---
+
+`<hack VM screenshot>`
+
+<!-- 
+- Hack has separate ROM/RAM (code/data)
+- would require VM/Hack change :/
+ -->
+
+---
+
+# Take(s) 1: 
+
+## dynamic call
+
+---
+
+## `call Output.printString 1`
+
+<!-- full function name has to be explicit in fn call -->
+
+---
+
+`<hack VM invalid call error screenshot>`
+
+---
+
+# Take 2: 
+
+## monomorphization
+
+---
+layout: two-cols
+---
 
 
-fn _printPoint point = do(
-    Output::printString("("),
-    Output::printInt(Point:x(point)),
-    Output::printString(", "),
-    Output::printInt(Point:y(point)),
-    Output::printString(")"),
-).
+```jill
+List::map(nums, &addTwo)
 
--- Apply a series of movements to a starting point.
--- @type Point, List(Direction) -> Point
-fn travel point directions =
-    -- Moves the provided point in the specified direction.
-    -- @type Direction, Point -> Point
-    fn move direction point =
-        let oldX = Point:x(point),
-        let oldY = Point:y(point),
 
-        Direction:match(
-            direction,
-            -- Up
-            Point:updateY(point, Int::inc(oldY)),
-            -- Down
-            Point:updateY(point, Int::dec(oldY)),
-            -- Left
-            Point:updateX(point, Int::dec(oldX)),
-            -- Right
-            Point:updateX(point, Int::inc(oldX)),
-        ).
-    
-    List::fold(directions, point, &move).
 
-fn main =
-    let travelPath = [Up(), Left(), Left(), Up(), Right(), Down(), Up()],
-    let travelDestination = travel(origin, travelPath),
+			.
+			.
+			.
 
-    do(
-        List::dispose(travelPath),
-        _printPoint(travelDestination)
-    ).
+
+
+
+List::map(nums, &inHalf)
+
+
+
+			.
+			.
+			.
+
+
+
+
+List::map(nums, &double)
 ```
+
+::right::
+
+<v-click>
+
+```{all|1,4|10,13|18,21|all}
+function List.map1 0
+	. . .
+
+	call Module.addTwo 1
+	
+	. . .
+
+
+
+function List.map2 0
+	. . .
+	
+	call Module.inHalf 1
+	
+	. . .
+
+
+function List.map3 0
+	. . .
+	
+	call Module.double 1
+	
+	. . .
+```
+
+</v-click>
+
+<!-- 
+
+[click:5]
+
+- difficult at best
+- lots of instructions (bad for Hack)
+- can't work if we don't know all used fns
+
+ -->
+
+---
+
+# Take 3: 
+
+## dynamic dispatch
+
+---
+layout: center
+---
+
+```
+if fid == 0 then
+	call Int.min 2
+
+else if fid == 1 then
+	call Int.max 2
+
+else if fid == 2 then
+	call Bool.and 2
+
+else if fid == 3 then
+	call Bool.not 1
+
+	. . .
+```
+
+<!-- 
+
+- each fn represented with a fid => enables dyn call
+- limited to 1-arity fns (or multiple dispatchers)
+- can't capture data when returning fn from fn
+
+ -->
+
+---
+
+# Take 4: 
+
+## dynamic dispatch + closure
+
+
+<!-- 
+
+- closure with fid + captures (and more)
+- solves problem with returning fn
+- save fn arity => multi-arg dispatch from single dispatcher
+
+ -->
+
+---
+
+# 🎉
+
+---
+
+![repo](./.dev/img/jillc-repo.png)
+
+---
+
+![lang tour](./.dev/img/lang-tour.png)
+
+<!-- if they want to use Jill (lang tour, examples) -->
+
+---
+
+![examples](./.dev/img/examples.png)
+
+<!-- if they want to use Jill (lang tour, examples) -->
+
+---
+
+![source code](./.dev/img/source-code.png)
+
+<!-- if they want to work on Jill (source code, ideas for features) -->
+
+---
+
+![feature ideas]()
+
+<!-- if they want to work on Jill (source code, ideas for features) -->
+
+---
+layout: end
+---
+
+`<insert linktree qr>`
+
+<!-- thx & links (repo, mail, presentation) -->
