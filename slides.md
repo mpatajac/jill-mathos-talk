@@ -225,6 +225,8 @@ fn printAttemptCount totalAttempts =
 layout: default
 ---
 
+<v-click>
+
 ````md magic-move
 ```jill
 fn main =
@@ -446,6 +448,23 @@ fn main =
     . . .
 ```
 ````
+
+
+</v-click>
+
+<!-- 
+
+- something else they are useful for; best presented by example
+- [click] have a series of numbers and a (user/runtime defined) threshold - want to keep only numbers larger than the threshold
+- [click] use `List::filter`, but can't use `Bool::gt` ("one argument, two values")
+- [click:3] make a function that takes the threshold
+- [click] nested, create another function that takes value to evaluate and **captures** threshold
+- [click] return nested fn (ref)
+- [click] call outer fn to create comparator/predicate, use *that* in filter
+- [click:4] *note* just var, no ref
+- [click:1] => they have the abillity to **bind data**
+
+ -->
 
 ---
 
