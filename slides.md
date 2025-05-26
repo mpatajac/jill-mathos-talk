@@ -222,6 +222,232 @@ fn printAttemptCount totalAttempts =
 </v-click>
 
 ---
+layout: default
+---
+
+````md magic-move
+```jill
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+    . . .
+```
+
+```jill{7}
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+```jill{7,8}
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	-- ERROR
+	let onlyGreaterThanThreshold = List::filter(nums, &Bool::gt),
+
+    . . .
+```
+
+
+```jill{7}
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+
+```jill{1}
+fn isGreaterThan required =
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+```jill{2}
+fn isGreaterThan required =
+	fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+```jill{1,4}
+fn isGreaterThan required =
+	fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+	&isGreaterThanRequired.
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+
+```jill{13}
+fn isGreaterThan required =
+	fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+	&isGreaterThanRequired.
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	let isGreaterThanThreshold = isGreaterThan(threshold),
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+```jill{13-14}
+fn isGreaterThan required =
+	fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+	&isGreaterThanRequired.
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	-- @type Fn(Int) -> Bool
+	let isGreaterThanThreshold = isGreaterThan(threshold),
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+```jill{13-15}
+fn isGreaterThan required =
+	fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+	&isGreaterThanRequired.
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	-- @type Fn(Int) -> Bool
+	let isGreaterThanThreshold = isGreaterThan(threshold),
+	let onlyGreaterThanThreshold = List::filter(nums, ?),
+
+    . . .
+```
+
+```jill{13-15}
+fn isGreaterThan required =
+	fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+	&isGreaterThanRequired.
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	-- @type Fn(Int) -> Bool
+	let isGreaterThanThreshold = isGreaterThan(threshold),
+	let onlyGreaterThanThreshold = List::filter(nums, isGreaterThanThreshold),
+
+    . . .
+```
+
+
+```jill{15}
+fn isGreaterThan required =
+	fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+	&isGreaterThanRequired.
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+	-- @type Fn(Int) -> Bool
+	let isGreaterThanThreshold = isGreaterThan(threshold),
+	let onlyGreaterThanThreshold = List::filter(nums, isGreaterThanThreshold),
+
+    . . .
+```
+
+
+```jill
+fn isGreaterThan required =
+    fn isGreaterThanRequired entry [required] = Bool::gt(entry, required).
+
+    &isGreaterThanRequired.
+
+
+fn main =
+    . . .
+
+    let nums = [ . . . ],
+	let threshold = Keyboard::readInt("Enter threshold: "),
+
+    -- @type Fn(Int) -> Bool
+    let isGreaterThanThreshold = isGreaterThan(threshold),
+    let onlyGreaterThanThreshold = List::filter(nums, isGreaterThanThreshold),
+
+    . . .
+```
+````
+
+---
 
 <v-clicks>
 
