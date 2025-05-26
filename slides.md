@@ -14,7 +14,7 @@ The frontmatter of this slide is also the headmatter
 
 <!-- TODO: replace with diagram -->
 
-!["abstraction path"](./.dev/img/nand2tetris-structure.jpg)
+!["abstraction path"](./assets/nand2tetris-structure.jpg)
 
 
 ---
@@ -417,23 +417,23 @@ else if fid == 3 then
 
 ---
 
-![repo](./.dev/img/jillc-repo.png)
+![repo](./assets/jillc-repo.png)
 
 ---
 
-![lang tour](./.dev/img/lang-tour.png)
+![lang tour](./assets/lang-tour.png)
 
 <!-- if they want to use Jill (lang tour, examples) -->
 
 ---
 
-![examples](./.dev/img/examples.png)
+![examples](./assets/examples.png)
 
 <!-- if they want to use Jill (lang tour, examples) -->
 
 ---
 
-![source code](./.dev/img/source-code.png)
+![source code](./assets/source-code.png)
 
 <!-- if they want to work on Jill (source code, ideas for features) -->
 
