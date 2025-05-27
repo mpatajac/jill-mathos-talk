@@ -652,7 +652,7 @@ else if fid == 3 then
 
 - closure with fid + captures (and more)
 - solves problem with returning fn
-- save fn arity => multi-arg dispatch from single dispatcher
+- pass fn arity as arg to dispatcher => multi-arg dispatch from single dispatcher
 
  -->
 
