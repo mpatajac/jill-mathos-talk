@@ -24,6 +24,38 @@ layout: fact
 POBOGU
 
 
+---
+
+<v-clicks>
+
+- functional paradigm
+- drop-in replacement for Jack
+- follow Nand2Tetris principles
+- modern design
+
+</v-clicks>
+
+
+<!-- 
+
+- [click] FP principles/constructs 
+  - fns-as-vals
+  - immutable
+  - recursion/HOF over loops
+  - ADT
+  - modular (both fns and code structure)
+  - pattern matching
+- [click] drop-in replacement for Jack (100% compatibility with VM; existing tooling => better adoption + I'm lazy)
+- [click] follow Jack & Nand2Tetris "spirit" (for-edu, implementation over usage)
+- [click] "modern"/improvement (simple, concise, better tooling...)
+
+
+ -->
+
+---
+
+# Jill
+
 --- 
 layout: default
 --- 
@@ -615,7 +647,7 @@ fn printAttemptCount totalAttempts =
 
 ---
 
-# `&Int::add`
+## `&Int::add`
 
 <!-- 
 
