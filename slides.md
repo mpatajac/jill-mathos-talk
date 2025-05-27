@@ -6,9 +6,7 @@ defaults:
 transition: fade
 ---
 
-# Slide 1
-
-The frontmatter of this slide is also the headmatter
+# Jill — funkcijski jezik za Nand2Tetris platformu
 
 ---
 
@@ -16,29 +14,6 @@ The frontmatter of this slide is also the headmatter
 
 !["abstraction path"](./assets/nand2tetris-structure.jpg)
 
-
----
-
-# Bullet points test
-
-<v-clicks>
-
-- point one
-- point two
-- third point
-- hehe
-
-</v-clicks>
-
----
-layout: quote
----
-
-# Quote layout test
-
-> Some of these features...<br>
-> Make the writing of Jack programs a bit harder;<br>
-> Make the writing of a Jack compiler much easier.
 
 ---
 layout: fact
