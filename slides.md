@@ -723,6 +723,188 @@ layout: default
 ````md magic-move
 
 ```jill
+type Direction = Up, Down, Left, Right.
+```
+
+```jill
+type Direction = Up, Down, Left, Right.
+
+-- @type Point(Int, Int)
+type Point = Point(x, y).
+```
+
+```jill
+type Direction = Up, Down, Left, Right.
+
+-- @type Point(Int, Int)
+type Point = Point(x, y).
+
+
+-- @type Point
+let origin = Point(0, 0).
+```
+
+```jill{all|11|13-14|19,21,23,25|16-26}
+type Direction = Up, Down, Left, Right.
+
+-- @type Point(Int, Int)
+type Point = Point(x, y).
+
+
+-- @type Point
+let origin = Point(0, 0).
+
+-- Moves the provided point in the specified direction.
+-- @type Direction, Point -> Point
+fn move direction point =
+	let oldX = Point:x(point),
+	let oldY = Point:y(point),
+
+	Direction:match(
+		direction,
+		-- Up
+		Point:updateY(point, Int::inc(oldY)),
+		-- Down
+		Point:updateY(point, Int::dec(oldY)),
+		-- Left
+		Point:updateX(point, Int::dec(oldX)),
+		-- Right
+		Point:updateX(point, Int::inc(oldX)),
+	).
+```
+
+```jill
+type Direction = Up, Down, Left, Right.
+
+-- @type Point(Int, Int)
+type Point = Point(x, y).
+
+
+-- @type Point
+let origin = Point(0, 0).
+
+-- Moves the provided point in the specified direction.
+-- @type Direction, Point -> Point
+fn move direction point =
+	let oldX = Point:x(point),
+	let oldY = Point:y(point),
+
+	Direction:match(
+		direction,
+		-- Up
+		Point:updateY(point, Int::inc(oldY)),
+		-- Down
+		Point:updateY(point, Int::dec(oldY)),
+		-- Left
+		Point:updateX(point, Int::dec(oldX)),
+		-- Right
+		Point:updateX(point, Int::inc(oldX)),
+	).
+```
+
+````
+
+</v-click>
+
+<!-- 
+
+- `type` to organize/structure data => series of *variants* (constructor functions)
+- [click] can be a simple enumeration...
+- [click] ... or a record
+- [click] creating instance
+- [click] use in program
+- [click] "type like any other"
+- [click] accessor fn (no dedicated syntax)
+- [click] updater fn (no dedicated syntax)
+- [click] (simple, variant-based) pattern matching
+
+ -->
+
+
+---
+layout: default
+---
+
+
+<v-click>
+
+````md magic-move
+```jill
+type BinaryTree = 
+	-- @type Null
+    Null, 
+	-- @type Node(BinaryTree(a), a, BinaryTree(a))
+    Node(left, value, right).
+```
+
+```jill
+type BinaryTree = 
+	-- @type Null
+    Null, 
+	-- @type Node(BinaryTree(a), a, BinaryTree(a))
+    Node(left, value, right).
+
+-- @type BinaryTree(a) -> Int
+fn countTreeNodes t =
+    BinaryTree:match(
+        t,
+		-- Null
+        0,
+		-- Node(..)
+        Int::inc(
+            Int::add(
+                -- at this point, we know that `t` is a `Node`
+                countTreeNodes(Node:left(t)),
+                countTreeNodes(Node:right(t)),
+            )
+        )
+    ).
+```
+
+```jill{4-5,13,17-18}
+type BinaryTree = 
+	-- @type Null
+    Null, 
+	-- @type Node(BinaryTree(a), a, BinaryTree(a))
+    Node(left, value, right).
+
+-- @type BinaryTree(a) -> Int
+fn countTreeNodes t =
+    BinaryTree:match(
+        t,
+		-- Null
+        0,
+		-- Node(..)
+        Int::inc(
+            Int::add(
+                -- at this point, we know that `t` is a `Node`
+                countTreeNodes(Node:left(t)),
+                countTreeNodes(Node:right(t)),
+            )
+        )
+    ).
+```
+````
+
+</v-click>
+
+<!-- 
+- [click] combination of variant types
+- [click:2] safe access on pattern-matched entity
+ -->
+
+
+
+---
+layout: default
+---
+
+
+<v-click>
+
+````md magic-move
+
+```jill
 fn abs x =
     ifElse(
         Bool::ge(x, 0),
