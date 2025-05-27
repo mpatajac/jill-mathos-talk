@@ -1320,9 +1320,20 @@ else if fid == 3 then
 <!-- if they want to work on Jill (source code, ideas for features) -->
 
 ---
-layout: end
+layout: quote
 ---
 
-`<insert linktree qr>`
+
+## Repository: https://github.com/mpatajac/jillc
+
+<br>
+<br>
+
+## Email: patajacmatija3@gmail.com
+
+<br>
+<br>
+
+## Slides: https://mpatajac.github.io/jill-mathos-talk
 
 <!-- thx & links (repo, mail, presentation) -->
