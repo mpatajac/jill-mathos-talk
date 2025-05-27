@@ -718,7 +718,71 @@ layout: default
 ---
 
 
-# do
+<v-click>
+
+````md magic-move
+
+```jill
+fn abs x =
+    ifElse(
+        Bool::ge(x, 0),
+        x,
+        Int::neg(x)
+    ).
+```
+
+```jill{3}
+fn abs x =
+    ifElse(
+        Bool::ge(x, 0),
+        x,
+        Int::neg(x)
+    ).
+```
+
+```jill{4}
+fn abs x =
+    ifElse(
+        Bool::ge(x, 0),
+        x,
+        Int::neg(x)
+    ).
+```
+
+```jill{5}
+fn abs x =
+    ifElse(
+        Bool::ge(x, 0),
+        x,
+        Int::neg(x)
+    ).
+```
+
+```jill
+fn abs x =
+    ifElse(
+        Bool::ge(x, 0),
+        x,
+        Int::neg(x)
+    ).
+```
+
+````
+
+</v-click>
+
+<!-- 
+special (built-in) functions
+- different evaluation
+- variadic
+ -->
+
+
+
+---
+layout: default
+---
+
 
 <v-click>
 
@@ -787,10 +851,12 @@ fn printAttemptCount totalAttempts =
     ).
 ```
 
+
 ````
 
 </v-click>
 
+<!-- do -->
 
 ---
 
