@@ -8,11 +8,72 @@ transition: fade
 
 # Jill — funkcijski jezik za Nand2Tetris platformu
 
+<!-- 
+
+- high-level overview (time-constrained)
+- informal conversation after official part
+
+ -->
+
+---
+
+# Nand2Tetris
+
+<!-- 
+
+- demonstrates how computers (actually) work
+
+ -->
+
+---
+layout: center
 ---
 
 <!-- TODO: replace with diagram -->
 
 !["abstraction path"](./assets/nand2tetris-structure.jpg)
+
+
+<!-- 
+
+- flow
+  - HW (gates, chips, components, CPU)
+  - SW (machine code, assembly, VM, Jack)
+- edu-first => primitive
+  - no decimals (only ints)
+  - limited memory
+  - limited instruction set
+  - ...
+
+ -->
+
+---
+
+`<Jack slide quote>`
+
+
+<!-- theme: compromise -->
+
+
+---
+layout: center
+---
+
+<!-- TODO: replace with diagram -->
+
+!["abstraction path"](./assets/nand2tetris-structure.jpg)
+
+
+<!-- 
+
+- => built a **new language** as a replacement for Jack
+
+ -->
+
+
+---
+transition: none
+---
 
 
 ---
@@ -23,6 +84,40 @@ layout: fact
 
 POBOGU
 
+<!-- bored, too much free time, not employed etc. -->
+
+---
+
+# Jack
+
+<!-- based on early-2000's Java (not nice) -->
+
+---
+layout: center
+---
+
+`<Jack hello world>`
+
+<!-- very OOP -->
+
+---
+layout: center
+---
+
+`<Jack keywords/symbols>`
+
+<!-- 
+
+- primitive, but not simple
+- many keywords/ways of doing things
+
+ -->
+
+---
+
+# 😅
+
+<!-- *how hard could it be* -->
 
 ---
 
