@@ -627,6 +627,75 @@ fn printAttemptCount totalAttempts =
 
 </v-click>
 
+
+---
+
+# 
+
+<!-- 
+
+- initially designed to be "invisible" (completely equal to data, like in Haskell); turned out to be somewhat impractical (**compromise**)
+
+ -->
+
+---
+
+# `&Int::add`
+
+<!-- 
+
+- have to "take a reference"
+
+ -->
+
+---
+layout: default
+---
+
+
+<v-click>
+
+
+
+````md magic-move
+
+
+```jill
+fn isPositive num = Bool::gt(num, 0).
+```
+
+```jill
+fn isPositive num = Bool::gt(num, 0).
+
+fn onlyPositives nums = List::filter(nums, &isPositive).
+```
+
+```jill{6-}
+fn isPositive num = Bool::gt(num, 0).
+
+fn onlyPositives nums = List::filter(nums, &isPositive).
+
+
+fn playTurn game isPlayersTurn =
+    let turn = ifElse(isPlayersTurn, &Player::turn, &Computer::turn),
+    let newGameState = turn(game),
+    
+    . . .
+```
+
+
+
+````
+
+</v-click>
+
+<!-- 
+
+- [click] can be passed directly to another function...
+- [click:2] ...or stored into a variable (for later use)
+
+ -->
+
 ---
 layout: default
 ---
@@ -651,7 +720,7 @@ fn main =
     let nums = [ . . . ],
 	let threshold = Keyboard::readInt("Enter threshold: "),
 
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
@@ -677,7 +746,7 @@ fn main =
     let nums = [ . . . ],
 	let threshold = Keyboard::readInt("Enter threshold: "),
 
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
@@ -693,7 +762,7 @@ fn main =
     let nums = [ . . . ],
 	let threshold = Keyboard::readInt("Enter threshold: "),
 
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
@@ -709,7 +778,7 @@ fn main =
     let nums = [ . . . ],
 	let threshold = Keyboard::readInt("Enter threshold: "),
 
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
@@ -727,7 +796,7 @@ fn main =
     let nums = [ . . . ],
 	let threshold = Keyboard::readInt("Enter threshold: "),
 
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
@@ -747,7 +816,7 @@ fn main =
 	let threshold = Keyboard::readInt("Enter threshold: "),
 
 	let isGreaterThanThreshold = isGreaterThan(threshold),
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
@@ -767,7 +836,7 @@ fn main =
 
 	-- @type Fn(Int) -> Bool
 	let isGreaterThanThreshold = isGreaterThan(threshold),
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
@@ -787,7 +856,7 @@ fn main =
 
 	-- @type Fn(Int) -> Bool
 	let isGreaterThanThreshold = isGreaterThan(threshold),
-	let onlyGreaterThanThreshold = List::filter(nums, ?),
+	let onlyGreaterThanThreshold = List::filter(nums, <?>),
 
     . . .
 ```
