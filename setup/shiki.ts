@@ -1,5 +1,6 @@
 import { defineShikiSetup } from '@slidev/types'
 import jill from './jill.tmLanguage.json'
+import Jack from './jack.tmLanguage.json'
 
 export default defineShikiSetup(() => {
 	return {
@@ -8,7 +9,8 @@ export default defineShikiSetup(() => {
 			light: 'catppuccin-latte'
 		},
 		langs: [
-			jill
+			jill,
+			Jack
 		]
 	}
 })

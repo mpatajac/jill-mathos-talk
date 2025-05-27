@@ -48,8 +48,10 @@ layout: center
  -->
 
 ---
+layout: center
+---
 
-`<Jack slide quote>`
+!["jack compromise"](./assets/jack-compromise.png)
 
 
 <!-- theme: compromise -->
@@ -93,23 +95,75 @@ POBOGU
 <!-- based on early-2000's Java (not nice) -->
 
 ---
-layout: center
+layout: default
 ---
 
-`<Jack hello world>`
+```Jack
+class Main {
+   function void main() {
+      do Output.printString("Hello world!");
+      do Output.println();
+
+      return;
+   }
+}
+```
+
+
+---
+layout: default
+---
+
+```Jack
+/** Represents a 2D point. */
+class Point {
+	// The coordinates of this point:
+	field int x, y;
+	// The number of point objects constructed so far:
+	static int pointCount;
+	/** Constructs a point and initializes it
+	with the given coordinates */
+	constructor Point new(int ax, int ay) {
+		let x = ax;
+		let y = ay;
+		let pointCount = pointCount + 1;
+		return this;
+	}
+	/** Returns the x coordinate of this point */
+	method int getx() { return x; }
+	/** Returns the y coordinate of this point */
+	method int gety() { return y; }
+	/** Returns the number of Points constructed so far */
+	function int getPointCount() {
+		return pointCount;
+	}
+
+	// . . .
+}
+```
 
 <!-- very OOP -->
 
 ---
-layout: center
----
 
-`<Jack keywords/symbols>`
+
+```{all|4|2|7|all}
+class this
+constructor method function
+int boolean char void
+var static field
+let do if else while return
+true false
+null
+```
+
 
 <!-- 
 
 - primitive, but not simple
-- many keywords/ways of doing things
+- [click] many keywords/ways of doing things
+- [click:2] *null*
+- [click] decided to try and implement a new language (*how hard could it be*)
 
  -->
 
@@ -133,6 +187,7 @@ layout: center
 
 <!-- 
 
+- guidelines set to follow
 - [click] FP principles/constructs 
   - fns-as-vals
   - immutable
@@ -150,6 +205,13 @@ layout: center
 ---
 
 # Jill
+
+<!-- 
+
+- some things only mentioned, some things skipped entirely
+- no need to remember, materials will be provided
+
+ -->
 
 --- 
 layout: default
@@ -793,8 +855,8 @@ fn playTurn game isPlayersTurn =
 
 <!-- 
 
-- [click] can be passed directly to another function...
-- [click:2] ...or stored into a variable (for later use)
+- [click:2] can be passed directly to another function...
+- [click:1] ...or stored into a variable (for later use)
 
  -->
 
@@ -1074,15 +1136,11 @@ most of the stuff was straight-forward
 
 ## function pointer
 
----
-
-`<possible fn ptr screenshot>`
-
 <!-- tipically used -->
 
 ---
 
-`<hack VM screenshot>`
+!["hack rom ram"](./assets/hack-rom-ram.png)
 
 <!-- 
 - Hack has separate ROM/RAM (code/data)
@@ -1099,11 +1157,13 @@ most of the stuff was straight-forward
 
 ## `call Output.printString 1`
 
-<!-- full function name has to be explicit in fn call -->
+<!-- fn call VM instruction (format) -->
 
 ---
 
-`<hack VM invalid call error screenshot>`
+!["hack explicit fn call"](./assets/hack-explicit-fn-call.png)
+
+<!-- full function name has to be explicit in fn call -->
 
 ---
 
@@ -1256,12 +1316,6 @@ else if fid == 3 then
 ---
 
 ![source code](./assets/source-code.png)
-
-<!-- if they want to work on Jill (source code, ideas for features) -->
-
----
-
-![feature ideas]()
 
 <!-- if they want to work on Jill (source code, ideas for features) -->
 
