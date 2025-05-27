@@ -50,53 +50,487 @@ POBOGU
 
 
 --- 
-
-# Literals
+layout: default
+--- 
 
 <v-click>
 
 ````md magic-move
 
+```jill
+-- this is a comment
+```
 
 ```jill
--- Int
-42
+-- this is a comment
+-- another comment
 ```
 
+```jill{4}
+-- this is a comment
+-- another comment
 
-```jill{4-}
--- Int
-42
-
--- Bool
-False
+let x = 25.
 ```
 
+```jill{6-7}
+-- this is a comment
+-- another comment
 
-```jill{7-}
--- Int
-42
+let x = 25.
 
--- Bool
-False
-
--- String
-"Hello, there"
+-- @type Bool
+let isEarthFlat = False.
 ```
 
+```jill{6-10}
+-- this is a comment
+-- another comment
 
-```jill{10-}
--- Int
-42
+let x = 25.
 
--- Bool
-False
+-- @type Bool
+let isEarthFlat = False.
 
--- String
-"Hello, there"
+-- ERROR
+-- let isEarthFlat = True.
+```
 
--- List
-[3, 8, 11, 5, 7]
+```jill{12-13}
+-- this is a comment
+-- another comment
+
+let x = 25.
+
+-- @type Bool
+let isEarthFlat = False.
+
+-- ERROR
+-- let isEarthFlat = True.
+
+-- @type List(Int)
+let grades = [3, 1, 4, 1, 5].
+```
+
+```jill{15}
+-- this is a comment
+-- another comment
+
+let x = 25.
+
+-- @type Bool
+let isEarthFlat = False.
+
+-- ERROR
+-- let isEarthFlat = True.
+
+-- @type List(Int)
+let grades = [3, 1, 4, 1, 5].
+
+let isXOdd = isOdd(x).
+```
+
+```jill{17}
+-- this is a comment
+-- another comment
+
+let x = 25.
+
+-- @type Bool
+let isEarthFlat = False.
+
+-- ERROR
+-- let isEarthFlat = True.
+
+-- @type List(Int)
+let grades = [3, 1, 4, 1, 5].
+
+let isXOdd = isOdd(x).
+
+let rootOfX = Int::sqrt(x).
+```
+
+```jill{19}
+-- this is a comment
+-- another comment
+
+let x = 25.
+
+-- @type Bool
+let isEarthFlat = False.
+
+-- ERROR
+-- let isEarthFlat = True.
+
+-- @type List(Int)
+let grades = [3, 1, 4, 1, 5].
+
+let isXOdd = isOdd(x).
+
+let rootOfX = Int::sqrt(x).
+
+let _ = Output::moveCursor(12, 1).
+```
+
+```jill
+-- this is a comment
+-- another comment
+
+let x = 25.
+
+-- @type Bool
+let isEarthFlat = False.
+
+-- ERROR
+-- let isEarthFlat = True.
+
+-- @type List(Int)
+let grades = [3, 1, 4, 1, 5].
+
+let isXOdd = isOdd(x).
+
+let rootOfX = Int::sqrt(x).
+
+let _ = Output::moveCursor(12, 1).
+```
+
+````
+
+
+</v-click>
+
+
+<!-- 
+
+- [click] comment
+- [click] no block comments
+- [click] variable (using `let`)
+- [click] dynamically typed
+- [click] immutable variables (constants)
+- [click] lists for sequences
+- [click] fn call (local)
+- [click] fn call (other module)
+- [click] discard pattern
+
+ -->
+
+---
+layout: default
+--- 
+
+<v-click>
+
+````md magic-move
+
+```jill
+let foo = Int::mult(
+    x,
+    Int::sub(7, rootOfX),
+).
+```
+
+```jill{6-9}
+let foo = Int::mult(
+    x,
+    Int::sub(7, rootOfX),
+).
+
+let bar = Bool::and(
+    Bool::not(isEarthFlat),
+    Bool::eq(x, 3)
+).
+```
+
+```jill{11}
+let foo = Int::mult(
+    x,
+    Int::sub(7, rootOfX),
+).
+
+let bar = Bool::and(
+    Bool::not(isEarthFlat),
+    Bool::eq(x, 3)
+).
+
+let minusSeven = Int::neg(7).
+```
+
+```jill
+let foo = Int::mult(
+    x,
+    Int::sub(7, rootOfX),
+).
+
+let bar = Bool::and(
+    Bool::not(isEarthFlat),
+    Bool::eq(x, 3)
+).
+
+let minusSeven = Int::neg(7).
+```
+
+````
+
+</v-click>
+
+<!-- 
+
+- no operators
+- [click:4] usage/implementation compromise (operator format, argument count, precedence, grouping... => all auto-provided with fns)
+
+ -->
+
+
+---
+layout: default
+--- 
+
+<v-click>
+
+````md magic-move
+
+```jill
+fn isPositive x = Bool::gt(x, 0).
+```
+
+```jill{3-}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+```
+
+```jill{11-}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+    Bool::and(
+        Bool::ge(
+			String::length(username), 
+			3
+		),
+        Bool::le(
+			String::length(username), 
+			50
+		),
+    ).
+```
+
+```jill{12,16,20}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        Bool::ge(
+			String::length(username), 
+			3
+		),
+        Bool::le(
+			String::length(username), 
+			50
+		),
+    ).
+```
+
+```jill{12,16,20}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        Bool::ge(
+			usernameLength,
+			3
+		),
+        Bool::le(
+			usernameLength, 
+			50
+		),
+    ).
+```
+
+```jill{11-}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        Bool::ge(usernameLength, 3),
+        Bool::le(usernameLength, 50),
+    ).
+```
+
+```jill{15,16}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        Bool::ge(usernameLength, 3),
+        Bool::le(usernameLength, 50),
+    ).
+```
+
+```jill{12,17,18}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	fn isLongEnough usernameLength = Bool::ge(usernameLength, 3).
+
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        Bool::ge(usernameLength, 3),
+        Bool::le(usernameLength, 50),
+    ).
+```
+
+```jill{12,17,18}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	fn isLongEnough usernameLength = Bool::ge(usernameLength, 3).
+
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        isLongEnough(usernameLength),
+        Bool::le(usernameLength, 50),
+    ).
+```
+
+```jill{12,13,18,19}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	fn isLongEnough usernameLength = Bool::ge(usernameLength, 3).
+	fn isNotTooLong usernameLength = Bool::le(usernameLength, 50).
+
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        isLongEnough(usernameLength),
+        Bool::le(usernameLength, 50),
+    ).
+```
+
+```jill{12,13,18,19}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	fn isLongEnough usernameLength = Bool::ge(usernameLength, 3).
+	fn isNotTooLong usernameLength = Bool::le(usernameLength, 50).
+
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        isLongEnough(usernameLength),
+        isNotTooLong(usernameLength),
+    ).
+```
+
+```jill{11-}
+fn isPositive x = Bool::gt(x, 0).
+
+-- @type Int, Int, Int -> Int
+fn clamp x minValue maxValue =
+    Int::min(
+        Int::max(x, minValue),
+        maxValue
+    ).
+
+
+fn isUsernameValid username =
+	fn isLongEnough usernameLength = Bool::ge(usernameLength, 3).
+	fn isNotTooLong usernameLength = Bool::le(usernameLength, 50).
+
+	let usernameLength = String::length(username),
+
+    Bool::and(
+        isLongEnough(usernameLength),
+        isNotTooLong(usernameLength),
+    ).
 ```
 
 ````
@@ -104,44 +538,16 @@ False
 </v-click>
 
 
----
+<!-- 
 
-# Variable
+- [click] call is C-like, definition is ML (Haskell)-like
+- body is an expression to be evaluated; result is auto-returned
+- [click:2] entire body in one expression => can get complex
+- [click] extract data into (local) variables
+- [click:4] extract transformations into (local) fns
+  - [click:4] these are like any other fn (can have its own vars and fns etc.)
 
-<v-click>
-
-```jill
-counter
-```
-
-</v-click>
-
-
-
----
-
-# Function call
-
-<v-click>
-
-````md magic-move
-
-```jill
-checkUsername(username)
-```
-
-```jill{4-}
-checkUsername(username)
-
-
-Output::printString("Player 1")
-```
-````
-
-</v-click>
-
-
-
+ -->
 
 ---
 layout: default
